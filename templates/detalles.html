@@ -14,7 +14,6 @@
                 stroke-linecap="round" stroke-width="3"
                 d="M6 12h.01m6 0h.01m5.99 0h.01" /></svg>
     </button>
-    <!-- Dropdown menu -->
     <div id="dropdown"
         class="z-10 bg-neutral-primary-medium border border-default-medium rounded-base shadow-lg w-36 block hidden">
         <ul class="p-2 text-sm text-body font-medium"
@@ -35,11 +34,12 @@
         </ul>
     </div>
     <div class="flex flex-col items-center">
-        <img class="w-24 h-24 mb-6 rounded-full"
-            src="/docs/images/people/profile-picture-3.jpg"
-            alt="Bonnie image" />
+        <img class="w-24 h-24 mb-6 rounded-full object-cover"
+            src="{{ url_for('static', filename='src/images/perfil (3).png') }}"
+            alt="Foto de perfil" />
+
         <h5 class="mb-0.5 text-xl font-semibold tracking-tight text-heading">
-            {{ nombre }} {{ apaterno }}
+            {{ nombre }} {{ apellidos }} {{ telefono }}
         </h5>
         <span class="text-sm text-body">
             {{ email }}
@@ -57,11 +57,9 @@
                         stroke-width="2"
                         d="M16 12h4m-2 2v-4M4 18v-1a3 3 0 0 1 3-3h4a3 3 0 0 1 3 3v1a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Zm8-10a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                 </svg>
-
                 Regresar
             </a>
         </div>
     </div>
 </div>
-
 {% endblock %}
