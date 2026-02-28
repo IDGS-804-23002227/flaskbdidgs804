@@ -4,9 +4,11 @@ from config import DevelopmentConfig
 from flask_migrate import Migrate
 import forms
 from models import db, Alumnos
+from maestros.routes import maestros
 
 app = Flask(__name__)
 app.config.from_object(DevelopmentConfig)
+app.register_blueprint(maestros)
 db.init_app(app)
 migrate=Migrate(app,db)
 csrf = CSRFProtect(app)
@@ -25,6 +27,7 @@ def index():
     #tem = Alumnos.query('select * from alumnos')
     alumno=Alumnos.query.all()
     return render_template("index.html",form=create_form, alumno=alumno)
+
 
 @app.route("/alumnos", methods=["GET", "POST"])
 def alumnos():
@@ -98,7 +101,6 @@ def eliminar():
         db.session.commit()
         return redirect(url_for('index'))
     return render_template("eliminar.html", form=create_form)
-
 
 if __name__ == '__main__':
     app.run()

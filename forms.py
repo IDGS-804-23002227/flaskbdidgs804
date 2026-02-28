@@ -11,7 +11,7 @@ class UsuarioForm(FlaskForm):
             NumberRange(min=1, max=20, message='Valor no válido')
         ]
     )
-
+    
     nombre = StringField(
         'Nombre',
         validators=[
@@ -26,7 +26,7 @@ class UsuarioForm(FlaskForm):
             DataRequired(message='El apellido es requerido')
         ]
     )
-
+    
     email = EmailField(
         'Correo',
         validators=[
