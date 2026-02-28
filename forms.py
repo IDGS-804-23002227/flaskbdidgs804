@@ -1,6 +1,7 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField
-from wtforms.fields import EmailField
+from wtforms import validators
+from wtforms.fields import EmailField, HiddenField
 from wtforms.validators import DataRequired, Length, Email, NumberRange
 
 class UsuarioForm(FlaskForm):
@@ -27,6 +28,13 @@ class UsuarioForm(FlaskForm):
         ]
     )
     
+    especialidad = StringField(
+        'Especialidad',
+        validators=[
+            DataRequired(message='La especialidad es requerida')
+        ]
+    )
+    
     email = EmailField(
         'Correo',
         validators=[
@@ -39,5 +47,35 @@ class UsuarioForm(FlaskForm):
         'Telefono',
         validators=[
             DataRequired(message='El Telefono es requerido'),
+        ]
+    )
+    
+class MaestroForm(FlaskForm):
+    matricula = HiddenField()   
+    
+    nombre = StringField(
+        'Nombre',
+        validators=[
+            DataRequired(message='El nombre es requerido'),
+            Length(min=4, max=20, message='Debe tener entre 4 y 20 caracteres')
+        ]
+    )
+    apellidos = StringField(
+        'Apellido',
+        validators=[
+            DataRequired(message='El apellido es requerido')
+        ]
+    )
+    especialidad = StringField(
+        'Especialidad',
+        validators=[
+            DataRequired(message='La especialidad es requerida')
+        ]
+    )
+    email = EmailField(
+        'Correo',
+        validators=[
+            DataRequired(message='El correo es requerido'),
+            Email(message='Ingrese un correo válido')
         ]
     )
